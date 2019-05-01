@@ -159,7 +159,7 @@ public class JSONCallGraph {
 		if (index < 0) { /* invalid filename */
 			return null;
 		}
-		String relativeFilename = filename.substring(index + baseDir.length()); /* filename relative to the entry file */
+		String relativeFilename = filename.substring(index + baseDir.length() + 1); /* filename relative to the entry file */
 		node.put("file", relativeFilename);
 	
 		/* Extract start and end range */
