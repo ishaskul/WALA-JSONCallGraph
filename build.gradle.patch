@@ -1,0 +1,16 @@
+10c10,11
+<                    'Implementation-Version': version
+---
+>                    'Implementation-Version': version,
+>                    'Main-Class': 'com.ibm.wala.examples.drivers.JSONCallGraph'
+11a13,16
+>     doFirst {
+>         from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } } 
+>     }
+>     exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+28a34
+>     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+39c45
+<     mainClassName = "com.ibm.wala.examples.drivers.PDFTypeHierarchy"
+---
+>     mainClassName = "com.ibm.wala.examples.drivers.JSONCallGraph"
