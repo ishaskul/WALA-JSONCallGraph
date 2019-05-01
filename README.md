@@ -53,13 +53,13 @@ __From commandline__
 The patch modified build.gradle that it will export a all dependencies
 inside the JAR: `./gradlew jar`
 
-`java -jar ./build/libs/WALA-start-0.1.jar ../test/index.html 2>/dev/null`
+`java -jar ./build/libs/JSONCallGraph-1.0.jar ../test/index.html 2>/dev/null`
 
 ## Get clean output
 WALA outputs a lot to stderr, the relevant data: the actuall callgraph will
 be output on stdout only.
 
-_This works: `java -jar ./build/libs/WALA-start-0.1.jar ../test/index.html 2>/dev/null`_
+_This works: `java -jar ./build/libs/JSONCallGraph-1.0.jar ../test/index.html 2>/dev/null`_
 
 # NOTES
 Some more inspiring references towards this issue are:

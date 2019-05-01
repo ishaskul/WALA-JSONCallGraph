@@ -32,7 +32,7 @@ public class JSONCallGraph {
 			throws IllegalArgumentException, IOException, CancelException, WalaException {
 
 		if (args.length < 1) {
-			System.out.println("Usage: WalaCG <entry_file>");
+			System.out.println("Usage: JSONCallGraph <entry_file>");
 			System.exit(1);
 		}
 		
