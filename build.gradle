@@ -1,0 +1,50 @@
+apply plugin: 'java-library'
+apply plugin: 'application'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 11
+version = '1.0'
+configurations.implementation.setCanBeResolved(true)
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'JSONCallGraph',
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.ibm.wala.examples.drivers.JSONCallGraph'
+    }
+    
+        doFirst {
+        duplicatesStrategy = 'include'
+        from { configurations.implementation.collect { it.isDirectory() ? it : zipTree(it) } } 
+    }
+    exclude 'META-INF/*.RSA', 'META-INF/*.SF','META-INF/*.DSA' 
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def walaVersion = '1.6.0'
+
+    implementation "com.ibm.wala:com.ibm.wala.shrike:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.util:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.core:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.cast:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.cast.js:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.cast.js.rhino:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.cast.js:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.cast.js.rhino:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.cast.java:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.cast.java.ecj:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.dalvik:${walaVersion}"
+    implementation "com.ibm.wala:com.ibm.wala.scandroid:${walaVersion}"
+    implementation "com.googlecode.json-simple:json-simple:1.1.1"
+    testImplementation group: 'junit', name: 'junit', version: '4.+'
+}
+
+if (project.hasProperty('mainClass')) {
+    mainClassName = project.getProperty('mainClass')
+} else {
+    // use a default
+    mainClassName = "com.ibm.wala.examples.drivers.JSONCallGraph"
+}
